@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon'
+import { NavigationLinks } from '../config' 
+import { Logo } from '../config'
+---
+
+<div class="relative h-20 w-full">
+  <nav  >
+    <div
+      class="  z-50 mx-auto w-full  h-18 bg-white sm:bg-primary px-2  sm:px-0 lg:px-0">
+      <div class="relative flex h-20 items-center justify-between">
+  
+        <div class="flex flex-1 items-center h-20 justify-center lg:items-stretch lg:justify-start">
+          <div class="flex flex-shrink-0 items-center bg-white p-2">
+            <a href="http://reginaldolima.com/turminha-do-batutinha/"><img class="block h-16 " src={Logo.src} alt="Logo" /></a>
+          </div>
+          <div class=" lg:mx-4 lg:block">
+            <div class="flex space-x-2  hidden sm:flex">
+              { 
+                NavigationLinks.map((item) => (
+                  <a
+                    href={import.meta.env.BASE_URL + item.href}
+                    class={
+                      (item.href.length > 0 && Astro.url.toString().includes(item.href)
+                        ? 'bg-secundary text-white'
+                        : 'text-white hover:bg-secundary hover:text-white') +
+                      ' rounded-md px-5 py-2 text-lg font-medium  lg:mt-4 '
+                    }
+                    aria-current={
+                      item.href.length > 0 && Astro.url.toString().includes(item.href)
+                        ? 'page'
+                        : undefined
+                    }>
+                    {item.name}
+                  </a>
+                ))
+              }
+              <a
+              href="https://wa.me/5511998602917" target="_blank"
+              class="inline-flex items-center justify-center rounded-full lg:rounded-md border border-transparent bg-green-600 px-3 lg:px-5 lg:py-2 text-lg font-medium  lg:mt-4 text-white  ">
+              <Icon
+                  pack="bi"
+                  name="whatsapp"
+                class=" h-5  w-5 lg:me-2 bg-green-600"
+              /><span class="hidden lg:block">(11) 99860-2917</span>
+            </a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+ 
+  </nav>
+</div>

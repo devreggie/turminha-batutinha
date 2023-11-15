@@ -1,0 +1,41 @@
+---
+import type { Frontmatter } from '../config'
+import { SiteMetadata } from '../config'
+import Base from '../layouts/base.astro'
+import Hero from '../components/hero.astro'
+import Features from '../components/features2.astro' 
+import Features3 from '../components/features3.astro' 
+import Features4 from '../components/features4.astro' 
+import CTA from '../components/cta.astro' 
+import MyCarousel from '../components/carousel.astro'
+
+
+import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
+import socialImage from '../assets/undraw/undraw_design_inspiration.png'
+
+const frontmatter: Frontmatter = {
+  title: SiteMetadata.title,
+  description: SiteMetadata.description,
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+  publishDate: SiteMetadata.buildTime
+}
+
+const carouselPages = [
+  { name: 'Turminha do Batutinha', image: '../assets/gallery/carousel/escola_turminha_do_batutinha_01.jpeg' },
+  { name: 'Turminha do Batutinha', image: '../assets/gallery/carousel/escola_turminha_do_batutinha_02.jpeg'},
+  { name: 'Turminha do Batutinha', image: '../assets/gallery/carousel/escola_turminha_do_batutinha_03.jpeg' },
+  { name: 'Turminha do Batutinha', image: '../assets/gallery/carousel/escola_turminha_do_batutinha_04.jpeg' }
+]
+
+---
+
+<Base frontmatter={frontmatter}>
+
+  <Hero />
+  <div class="bg-gray-100"><CTA/></div>
+  <div class="bg-white"><Features3 /></div>
+  <div class="bg-gray-100"><Features /></div>
+  <div class="bg-white"><MyCarousel pages={carouselPages} /></div>
+  <div class="bg-gray-100"><Features4 /></div> 
+ </Base>
